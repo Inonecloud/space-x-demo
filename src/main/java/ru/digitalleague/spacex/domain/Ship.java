@@ -1,9 +1,10 @@
 package ru.digitalleague.spacex.domain;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name = "ship")
+@Table(name = "ships")
 public class Ship {
 
     @Id
@@ -16,6 +17,9 @@ public class Ship {
 
     @Column(name = "status")
     private String status;
+
+    @OneToMany(mappedBy = "ship", cascade = CascadeType.ALL)
+    private List<Launch> launches;
 
     public Ship() {
     }
@@ -42,5 +46,13 @@ public class Ship {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public List<Launch> getLaunches() {
+        return launches;
+    }
+
+    public void setLaunches(List<Launch> launches) {
+        this.launches = launches;
     }
 }
