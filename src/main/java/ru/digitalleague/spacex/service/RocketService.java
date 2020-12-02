@@ -33,4 +33,9 @@ public class RocketService {
         return rocketMapper.toDtoWithStatus(rocket);
     }
 
+    public RocketWithStatusDto getRocketForNasa(){
+        Rocket rocket = rocketRepository.findByStatus("IN_USE");
+        return rocketMapper.toDtoWithStatus(rocket);
+    }
+
 }

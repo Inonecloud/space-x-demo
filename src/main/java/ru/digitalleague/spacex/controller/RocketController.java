@@ -30,4 +30,10 @@ public class RocketController {
         return new ResponseEntity<RocketWithStatusDto>(rocketWithStatusDto, HttpStatus.OK);
     }
 
+    @GetMapping("/get_rocket")
+    public ResponseEntity<RocketWithStatusDto> getRocket(){
+        var rocketForNasa = rocketService.getRocketForNasa();
+        return new ResponseEntity<RocketWithStatusDto>(rocketForNasa, HttpStatus.OK);
+    }
+
 }
